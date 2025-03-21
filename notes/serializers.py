@@ -4,6 +4,7 @@ from .models import ActivityLog
 from .models import Collaboration
 from notes.models import NoteInvitee
 from .models import Note, NoteHistory
+from notes.models import Reminder
 
 class NoteSerializer(serializers.ModelSerializer):
     class Meta:
@@ -34,4 +35,9 @@ class NoteSerializer(serializers.ModelSerializer):
 class NoteHistorySerializer(serializers.ModelSerializer):
     class Meta:
         model = NoteHistory
+        fields = '__all__'
+
+class ReminderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Reminder
         fields = '__all__'

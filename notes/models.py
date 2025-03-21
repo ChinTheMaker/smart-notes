@@ -83,3 +83,11 @@ class NoteHistory(models.Model):
 
     def __str__(self):
         return f"Revision of Note {self.note.id} at {self.timestamp}"
+
+class Reminder(models.Model):
+    note = models.ForeignKey('Note', on_delete=models.CASCADE, related_name='reminders')
+    reminder_time = models.DateTimeField()
+    status = models.CharField(max_length=20, choices=[('pending', 'Pending'), ('sent', 'Sent')])
+
+    def __str__(self):
+        return f"Reminder for Note {self.note.id} at {self.reminder_time}"
